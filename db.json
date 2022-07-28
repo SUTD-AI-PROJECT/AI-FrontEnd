@@ -1,28 +1,59 @@
 {
-  "tasks": [
+  "items": [
     {
       "id": 1,
-      "text": "food shopping",
-      "day": "Feb 5th at 2:30pm",
-      "reminder": true
+      "name": "pencil",
+      "quantity": 2
     },
     {
       "id": 2,
-      "text": "food shopping2",
-      "day": "Feb 5th at 2:30pm",
-      "reminder": false
+      "name": "paper",
+      "quantity": 10
     },
     {
-      "text": "5412",
-      "day": "ads",
-      "reminder": true,
-      "id": 3
+      "name": "pear",
+      "id": "3",
+      "quantity": "10"
     },
     {
-      "text": "take test",
-      "day": "friday",
-      "reminder": false,
-      "id": 4
+      "name": "plane",
+      "id": "4",
+      "quantity": "15"
+    },
+    {
+      "name": "214",
+      "id": "51",
+      "quantity": "31"
+    }
+  ],
+
+  "tweets": [
+    {
+      "id": "21419784",
+      "username": "19847891357961",
+      "timestamp":"53719751",
+      "num_followers": "421",
+      "num_friends": "5213",
+      "num_favorites": "5613",
+      "entities": "sakhfakjfaks",
+      "sentiment":"5317",
+      "mentions": "46526",
+      "hashtags": "51987",
+      "urls": "t7321afnc1598537"
+    },
+
+    {
+      "id": "afsavara",
+      "username": "19847891357961",
+      "timestamp":"53719751",
+      "num_followers": "421",
+      "num_friends": "5213",
+      "num_favorites": "5613",
+      "entities": "sakhfakjfaks",
+      "sentiment":"5317",
+      "mentions": "46526",
+      "hashtags": "51987",
+      "urls": "t7321afnc1598537"
     }
   ]
 }

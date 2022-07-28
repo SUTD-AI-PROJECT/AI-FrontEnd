@@ -8,86 +8,51 @@ import Hero from './components/Hero';
 
 
 function App() {
-  const name = 'Brad'
-  const x = true
 
-  const [showAddTask, setShowAddTask] = useState(false)
-  const [tasks, setTasks] = useState([])
+  const [tweet, setTweet] = useState()
+  const [stats, setStats] = useState()
+
+  const getRandomTweet = async () =>{
+    const res = await fetch(`http://localhost:8000/getRandomTweet`)
+    const data= await res.json()
+    getStatistics(data)
+    return data
+  }
+
+  const getStatistics = async (data) =>{
+    const res = await fetch(`http://localhost:8000/getTweetPredictionStatistics`,
+    {
+      method:'POST',
+      headers:{
+      'Content-type':'application/json'
+      },
+      body: JSON.stringify(data),
+    }
+    )
+
+    const output = await res.json()
+    setStats(output)
+  }
 
   useEffect(() => {
-    const getTasks = async () =>{
-      const tasksFromServer = await fetchTasks()
-      setTasks(tasksFromServer)
+    const getStartTweet = async () =>{
+      const randTweet = await getRandomTweet()
+      setTweet(randTweet)
+      
     }
-    getTasks()
+    getStartTweet()
+    console.log(tweet)
   }, [])
 
-  const fetchTasks = async () =>{
-    const res = await fetch('http://localhost:5000/tasks')
-    const data= await res.json()
 
-    return data
-  }
-
-  const fetchTask = async (id) =>{
-    const res = await fetch(`http://localhost:5000/tasks/${id}`)
-    const data= await res.json()
-
-    return data
-  }
-
-// Add Task
-const addTask = async (task) =>{
-  const res = await fetch('http://localhost:5000/tasks',{
-    method:'POST',
-    headers:{
-      'Content-type':'application/json'
-    },
-    body: JSON.stringify(task),
-  
-  })
-
-  const data = await res.json()
-
-  // const id = tasks.length+1
-  // const newTask = {id, ...task}
-
-  setTasks([...tasks, data])
-}
-
-// Delete Task
-const deleteTask = async (id) =>{
-  await fetch(`http://localhost:5000/tasks/${id}`,{method:'DELETE'})
-  setTasks(tasks.filter((task)=>task.id!==id))
-}
-
-const toggleReminder = async (id) =>{
-  const taskToToggle = await fetchTask(id)
-  const updTask = {...taskToToggle, reminder:!taskToToggle.reminder}
-
-  const res = await fetch(`http://localhost:5000/tasks/${id}`,{
-    method:'PUT',
-    headers:{
-      'Content-type':'application/json'
-    },
-    body: JSON.stringify(updTask),
-  
-  })
-
-  const data = await res.json()
-
-  setTasks(tasks.map((task)=>task.id===id?{...task, reminder:!task.reminder}:task))
-}
 
   return (
     <Router>
       <div className="container">
-        <Header toggleAddTask={() => setShowAddTask(!showAddTask)} showAddTask={showAddTask}/> 
+        <Header getRandomTweet={getRandomTweet} setTweet = {setTweet} /> 
         <Routes>
-          <Route path='/' element={<Hero showAddTask={showAddTask} tasks={tasks} addTask={addTask} deleteTask={deleteTask} toggleReminder={toggleReminder} />}/>
-          <Route path='/about' element={<About/>}/>
+          <Route path='/' element={<Hero tweet={tweet} stats={stats}/>}/>
         </Routes>
-        <Footer/>
       </div>
     </Router>
   );

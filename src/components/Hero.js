@@ -1,12 +1,14 @@
-import Tasks from './Tasks';
-import AddTask from './AddTask';
+import Item from './Item';
+import Statistics from './Statistics';
+import LoadingSpinner from './LoadingSpinner';
 
-const Hero = ({showAddTask, tasks, addTask, deleteTask, toggleReminder}) => {
+const Hero = ({tweet, stats}) => {
   return (
-    <div>
-      {showAddTask &&<AddTask onAdd={addTask}/>}
-        {tasks.length > 0 ? <Tasks tasks = {tasks} onDelete={deleteTask} onToggle={toggleReminder}/>:'No Tasks to Show'}
+    <div className='tweetSection'>
+      <div className='tweet'>{tweet === undefined ?<LoadingSpinner text={"Loading Tweet"} />:<Item item={tweet}/>}</div>
+      <div className='stats'>{stats === undefined ?<LoadingSpinner text={"Loading Statistics"}/>:<Statistics stats={stats}/>}</div>
     </div>
+
   )
 }
 
