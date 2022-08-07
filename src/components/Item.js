@@ -10,7 +10,9 @@ const item = ({item}) => {
       <br></br>
       <h3>Timestamp: {item.timestamp} </h3>
       <br></br>
-      <h3>Followers: {item.num_followers} | Friends: {item.num_friends} | Favorites: {item.num_favorites}</h3>
+      <h3>Followers: {item.num_followers}</h3>
+      <h3>Friends: {item.num_friends}</h3>
+      <h3>Favorites: {item.num_favorites}</h3>
       <br></br>
       <h3>Sentiment: {item.sentiment} </h3>
       <br></br>

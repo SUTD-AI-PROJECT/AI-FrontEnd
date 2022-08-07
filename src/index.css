@@ -10,14 +10,47 @@ body {
   font-family: 'Poppins', sans-serif;
 }
 
+.outer{
+  display: flex;
+  
+}
+
 .container {
-  max-width: 1000px;
-  margin: 30px auto;
+  max-width: 90vw;
+  margin: 20px auto;
   overflow: auto;
-  min-height: 300px;
-  border: 0px solid steelblue;
+  height: fit-content;
   padding: 30px;
   border-radius: 5px;
+  margin-bottom: 10px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+.container2 {
+  max-width: 90vw;
+  margin: 0px auto;
+  overflow: auto;
+  height: fit-content;
+  padding: 30px;
+  padding-top: 0px;
+  margin-bottom: 0px;
+}
+
+.container2Inner{
+  font-size: 12px;
+  font-weight: bold;
+  font-family: "Helvetica Neue", Roboto, "Segoe UI", Calibri, sans-serif;
+  line-height: 16px;
+  border-color: #eee #ddd #bbb;
+  border-radius: 5px;
+  border-style: solid;
+  border-width: 1px;
+  padding: 16px 16px 16px 16px;
+  width:100%;
+  margin-top: 0px;
+  overflow-wrap: break-word;
+  height:fit-content;
 }
 
 
@@ -102,7 +135,7 @@ blockquote.twitter-tweet {
   width:49.5%;
   float:left;
   overflow-wrap: break-word;
-  height: 500px;
+  height: 370px;
 }
 
 .stats {
@@ -119,7 +152,7 @@ blockquote.twitter-tweet {
   width:49.5%;
   float:right;
   overflow-wrap: break-word;
-  height: 500px;
+  height: 370px;
 }
 
 .lds-ring {

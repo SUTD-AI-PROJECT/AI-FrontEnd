@@ -7,7 +7,7 @@ const Header = ({title, subtitle, getRandomTweet, setTweet} ) => {
 
   const getTweet= async () =>{
     const data = await getRandomTweet()
-    setTweet(data)
+    setTweet(data.raw)
   }
 
   return (
